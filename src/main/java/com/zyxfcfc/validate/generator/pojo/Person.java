@@ -1,47 +1,33 @@
 package com.zyxfcfc.validate.generator.pojo;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Table(name = "person")
+@Builder
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Person implements Serializable {
-    private Long id;
-
-    private String name;
-
-    private Byte age;
-
-    private Integer mobile;
-
     private static final long serialVersionUID = 1L;
 
-    public Long getId() {
-        return id;
-    }
+    @Id
+    private Long id;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    @Column(name = "name")
+    private String name;
 
-    public String getName() {
-        return name;
-    }
+    @Column(name = "age")
+    private Byte age;
 
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
-    }
+    @Column(name = "mobile")
+    private String mobile;
 
-    public Byte getAge() {
-        return age;
-    }
-
-    public void setAge(Byte age) {
-        this.age = age;
-    }
-
-    public Integer getMobile() {
-        return mobile;
-    }
-
-    public void setMobile(Integer mobile) {
-        this.mobile = mobile;
-    }
 }

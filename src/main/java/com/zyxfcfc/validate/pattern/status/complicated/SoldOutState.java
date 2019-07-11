@@ -1,6 +1,5 @@
 package com.zyxfcfc.validate.pattern.status.complicated;
 
-import com.oracle.tools.packager.Log;
 import lombok.extern.slf4j.Slf4j;
 
 /**

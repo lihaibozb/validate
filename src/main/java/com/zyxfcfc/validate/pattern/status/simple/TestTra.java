@@ -1,6 +1,7 @@
 package com.zyxfcfc.validate.pattern.status.simple;
 
-import com.oracle.tools.packager.Log;
+
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * description:  https://blog.csdn.net/lmj623565791/article/category/2206597
@@ -9,13 +10,14 @@ import com.oracle.tools.packager.Log;
  * @date 2019/7/3 3:49 PM
  * @version 1.0.0
  */
+@Slf4j
 public class TestTra {
 
     public static void main(String[] args) {
         VendingMachine vendingMachine = new VendingMachine(10);
         vendingMachine.insertMoney();
         vendingMachine.backMoney();
-        Log.info("-------------");
+        log.info("-------------");
 
         vendingMachine.insertMoney();
         vendingMachine.trunCrank();

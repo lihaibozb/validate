@@ -1,7 +1,5 @@
 package com.zyxfcfc.validate.pattern.singleton;
 
-import sun.security.jca.GetInstance;
-
 /**
  * description: 懒汉模式
  *

@@ -1,18 +1,18 @@
 package com.zyxfcfc.validate.controller;
 
-import com.google.common.util.concurrent.*;
 import com.zyxfcfc.validate.domain.Account;
+import com.zyxfcfc.validate.generator.pojo.Person;
+import com.zyxfcfc.validate.generator.service.IPersonService;
 import com.zyxfcfc.validate.util.AccountChecks;
-import com.zyxfcfc.validate.util.JsonUtils;
 import com.zyxfcfc.validate.util.ValidationUtils;
 import com.zyxfcfc.validate.util.annotation.MyLog;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.groups.Default;
-import java.util.concurrent.*;
 
 /**
  * @author lihaibo
@@ -23,6 +23,22 @@ import java.util.concurrent.*;
 @RestController
 @Slf4j
 public class ValidateController {
+
+    @Autowired
+    private IPersonService personService;
+
+    @GetMapping("/person")
+    @MyLog("query")
+    public String queryPerson(@RequestParam @NotNull String id) throws Exception {
+        Person person = null;
+        try {
+            person = personService.selectByPrimaryKey(Long.valueOf(id));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return person.toString();
+    }
+
 
     @GetMapping("/saveString")
     @MyLog("query")
