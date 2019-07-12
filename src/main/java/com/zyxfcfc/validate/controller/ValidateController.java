@@ -39,7 +39,6 @@ public class ValidateController {
         return person.toString();
     }
 
-
     @GetMapping("/saveString")
     @MyLog("query")
     public String query(@RequestParam @NotNull String param) throws Exception {

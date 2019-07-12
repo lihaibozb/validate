@@ -3,8 +3,11 @@ package com.zyxfcfc.validate;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.WebApplicationType;
 import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
@@ -16,11 +19,14 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  */
 @SpringBootApplication
 @EnableAspectJAutoProxy
-@EnableTransactionManagement
 @MapperScan("com.zyxfcfc.validate.generator.dao")
 @Slf4j
+@EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
+@EnableTransactionManagement(proxyTargetClass = true)
+@EnableConfigurationProperties
 public class ValidateApplication {
 
+	//TODO sharding-jdbc无效
 	public static void main(String[] args) {
 		new SpringApplicationBuilder(ValidateApplication.class).web(WebApplicationType.SERVLET).run(args);
 		//test grep console
